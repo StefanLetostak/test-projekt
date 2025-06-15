@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predpoveď počasia</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Predpoveď počasia</h1>
+    <h3>ZADAJ ÚDAJE Z 8-MEJ HODINY RÁNO V NÁMESTOVE</h3>
+    <div class="catalog-container">
+        <a href="{{ url_for('show_page', page=3) }}" class="arrow left">
+            <img src="{{ url_for('static', filename='obrazky/lava_sipka.png') }}" alt="Predchádzajúca strana">
+        </a>
+        <div style="width:100%;max-width:500px;">
+            <form method="post">
+                {{ form.hidden_tag() }}
+                <div>
+                    {{ form.mesiac.label }}
+                    {{ form.mesiac() }}
+                </div>
+                <div>
+                    {{ form.teplota.label }}
+                    {{ form.teplota() }}
+                </div>
+                <div>
+                    {{ form.smer.label }}
+                    {{ form.smer() }}
+                </div>
+                <div>
+                    {{ form.rychlost.label }}
+                    {{ form.rychlost() }}
+                </div>
+                <div>
+                    {{ form.tlak.label }}
+                    {{ form.tlak() }}
+                </div>
+                <div>
+                    {{ form.oblacnost.label }}
+                    {{ form.oblacnost() }}
+                </div>
+                <div>
+                    {{ form.vlhkost.label }}
+                    {{ form.vlhkost() }}
+                </div>
+                <div>
+                    {{ form.submit() }}
+                </div>
+            </form>
+            {% if zrazky_predpoved is not none %}
+                <p><b>Predikované zrážky o 13:00:</b> {{ zrazky_predpoved }} mm</p>
+            {% endif %}
+        </div>
+        <a href="{{ url_for('show_chatbot') }}" class="arrow right">
+            <img src="{{ url_for('static', filename='obrazky/prava_sipka.png') }}" alt="Ďalšia strana">
+        </a>
+    </div>
+    <footer>
+        <div class="page-number">4</div>
+    </footer>
+</body>
+</html>

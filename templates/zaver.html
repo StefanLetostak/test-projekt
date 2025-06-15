@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Záverečná strana</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="catalog-container">
+        <a class="arrow left" href="{{ url_for('show_chatbot') }}">
+            <img src="{{ url_for('static', filename='obrazky/lava_sipka.png') }}" alt="Predchádzajúca strana">
+        </a>
+        <div class="image-block">
+            <img src="{{ url_for('static', filename='obrazky/zaver.png') }}" alt="Záverečný obrázok">
+        </div>
+        <a class="arrow right" style="pointer-events: none; opacity: 0.5;" tabindex="-1">
+            <img src="{{ url_for('static', filename='obrazky/prava_sipka.png') }}" alt="Ďalšia strana">
+        </a>
+    </div>
+    <footer>
+        <div class="page-number">5</div>
+    </footer>
+</body>
+</html>
