@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalógová strana {{ page }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="catalog-container">
+        <button class="arrow left" {% if not prev %}disabled{% else %}onclick="location.href='{{ url_for('show_page', page=prev) }}'"{% endif %}>
+            <img src="{{ url_for('static', filename='obrazky/lava_sipka.png') }}" alt="Predchádzajúca strana">
+        </button>
+        <div class="image-block">
+            {% if img %}
+                <img src="{{ url_for('static', filename=img) }}" alt="Katalógová strana {{ page }}">
+            {% elif video %}
+                <video src="{{ url_for('static', filename=video) }}" controls></video>
+            {% endif %}
+        </div>
+        <button class="arrow right"
+            {% if next == 'form' %}onclick="location.href='{{ url_for('show_form') }}'"
+            {% elif next == 'chatbot' %}onclick="location.href='{{ url_for('show_chatbot') }}'"
+            {% elif not next %}disabled
+            {% else %}onclick="location.href='{{ url_for('show_page', page=next) }}'"
+            {% endif %}>
+            <img src="{{ url_for('static', filename='obrazky/prava_sipka.png') }}" alt="Ďalšia strana">
+        </button>
+    </div>
+    <footer>
+        <div class="page-number">{{ page }}</div>
+    </footer>
+</body>
+</html>
